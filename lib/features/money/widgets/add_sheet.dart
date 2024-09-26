@@ -21,13 +21,16 @@ class AddSheet extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 5,
-                width: 36,
-                margin: const EdgeInsets.only(top: 6),
-                decoration: BoxDecoration(
-                  color: const Color(0xffFAFAFA).withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(5),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  height: 5,
+                  width: 36,
+                  margin: const EdgeInsets.only(top: 6),
+                  decoration: BoxDecoration(
+                    color: const Color(0xffFAFAFA).withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
                 ),
               ),
             ],

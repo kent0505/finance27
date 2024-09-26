@@ -29,6 +29,7 @@ flutter:
     - assets/
     - assets/fonts/
     - assets/settings/
+    - assets/category/
   fonts:
     - family: SFL
       fonts:

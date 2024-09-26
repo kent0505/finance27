@@ -90,3 +90,17 @@ void precacheImages(BuildContext context) {
     logger(e);
   }
 }
+
+String getCategorySvg(String cat) {
+  if (cat == 'Business') return 'assets/category/cat1.svg';
+  if (cat == 'Salary') return 'assets/category/cat2.svg';
+  if (cat == 'Dividends') return 'assets/category/cat3.svg';
+  if (cat == 'Rent') return 'assets/category/cat5.svg';
+  if (cat == 'Freelance') return 'assets/category/cat6.svg';
+  if (cat == 'Procurement') return 'assets/category/cat7.svg';
+  if (cat == 'Food') return 'assets/category/cat8.svg';
+  if (cat == 'Transport') return 'assets/category/cat9.svg';
+  if (cat == 'Rest') return 'assets/category/cat10.svg';
+  if (cat == 'Investment') return 'assets/category/cat11.svg';
+  return 'assets/category/cat1.svg';
+}

@@ -6,26 +6,27 @@ import '../../../core/config/app_colors.dart';
 import '../../../core/models/money.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
+import '../../../core/widgets/dialogs/delete_dialog.dart';
 import '../../../core/widgets/textfields/txt_field.dart';
 import '../../../core/widgets/texts/text_r.dart';
 import '../bloc/money_bloc.dart';
 import '../widgets/category_card.dart';
 
-class MoneyAddPage extends StatefulWidget {
-  const MoneyAddPage({super.key, required this.income});
+class MoneyEditPage extends StatefulWidget {
+  const MoneyEditPage({super.key, required this.money});
 
-  final bool income;
+  final Money money;
 
   @override
-  State<MoneyAddPage> createState() => _MoneyAddPageState();
+  State<MoneyEditPage> createState() => _MoneyEditPageState();
 }
 
-class _MoneyAddPageState extends State<MoneyAddPage> {
+class _MoneyEditPageState extends State<MoneyEditPage> {
   final controller1 = TextEditingController();
   final controller2 = TextEditingController();
   final controller3 = TextEditingController();
 
-  bool active = false;
+  bool active = true;
 
   bool getCategoryActive(String value) {
     if (controller3.text == value) return true;
@@ -47,19 +48,46 @@ class _MoneyAddPageState extends State<MoneyAddPage> {
     checkActive();
   }
 
-  void onSave() {
+  void onEdit() {
     context.read<MoneyBloc>().add(
-          AddMoneyEvent(
+          EditMoneyEvent(
             money: Money(
-              id: getCurrentTimestamp(),
+              id: widget.money.id,
               title: controller1.text,
               amount: int.tryParse(controller2.text) ?? 0,
               category: controller3.text,
-              income: widget.income,
+              income: widget.money.income,
             ),
           ),
         );
     context.pop();
+  }
+
+  void onDelete() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DeleteDialog(
+          title: widget.money.income
+              ? 'Delete this Income?'
+              : 'Delete this Expense?',
+          onYes: () {
+            context
+                .read<MoneyBloc>()
+                .add(DeleteMoneyEvent(id: widget.money.id));
+            context.pop();
+          },
+        );
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller1.text = widget.money.title;
+    controller2.text = widget.money.amount.toString();
+    controller3.text = widget.money.category;
   }
 
   @override
@@ -77,7 +105,7 @@ class _MoneyAddPageState extends State<MoneyAddPage> {
       children: [
         const SizedBox(height: 22),
         TextB(
-          widget.income ? 'Add Income' : 'Add Expense',
+          widget.money.income ? 'Edit Income' : 'Edit Expense',
           fontSize: 32,
         ),
         const SizedBox(height: 24),
@@ -113,7 +141,7 @@ class _MoneyAddPageState extends State<MoneyAddPage> {
           color: AppColors.white40,
         ),
         const SizedBox(height: 8),
-        if (widget.income) ...[
+        if (widget.money.income) ...[
           CategoryCard(
             category: 'Business',
             active: getCategoryActive('Business'),
@@ -176,9 +204,14 @@ class _MoneyAddPageState extends State<MoneyAddPage> {
         ],
         const SizedBox(height: 16),
         PrimaryButton(
-          title: 'Done',
+          title: 'Edit',
           active: active,
-          onPressed: onSave,
+          onPressed: onEdit,
+        ),
+        const SizedBox(height: 16),
+        PrimaryButton(
+          title: 'Delete',
+          onPressed: onDelete,
         ),
       ],
     );

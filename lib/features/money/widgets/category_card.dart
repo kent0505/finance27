@@ -1,3 +1,4 @@
+import 'package:finance27/core/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -31,7 +32,12 @@ class CategoryCard extends StatelessWidget {
         padding: EdgeInsets.zero,
         child: Row(
           children: [
-            const SizedBox(width: 48),
+            SizedBox(
+              width: 48,
+              child: Center(
+                child: SvgPicture.asset(getCategorySvg(category)),
+              ),
+            ),
             Expanded(
               child: TextR(
                 category,

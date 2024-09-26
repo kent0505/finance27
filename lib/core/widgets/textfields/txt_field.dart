@@ -57,7 +57,7 @@ class _TxtFieldState extends State<TxtField> {
       height: 48,
       decoration: BoxDecoration(
         color: AppColors.white8,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
         controller: widget.controller,
