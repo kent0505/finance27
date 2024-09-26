@@ -76,7 +76,7 @@ class BarChartWidget extends StatelessWidget {
 
   BarChartGroupData _makeGroupData(int x, double y1, double y2) {
     return BarChartGroupData(
-      barsSpace: 4,
+      barsSpace: 3,
       x: x,
       barRods: [
         BarChartRodData(
@@ -126,13 +126,10 @@ class BarChartWidget extends StatelessWidget {
         text = const Text('', style: style);
         break;
     }
-    return Padding(
-      padding: const EdgeInsets.only(top: 12),
-      child: SideTitleWidget(
-        axisSide: meta.axisSide,
-        space: 4,
-        child: text,
-      ),
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      space: 12,
+      child: text,
     );
   }
 
@@ -160,13 +157,10 @@ class BarChartWidget extends StatelessWidget {
         text = const Text('', style: style);
         break;
     }
-    return Padding(
-      padding: const EdgeInsets.only(top: 12),
-      child: SideTitleWidget(
-        axisSide: meta.axisSide,
-        space: 4,
-        child: text,
-      ),
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      space: 12,
+      child: text,
     );
   }
 }

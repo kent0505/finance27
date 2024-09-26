@@ -45,7 +45,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         DateTime startOfWeek = now.subtract(Duration(days: now.weekday - 1));
         DateTime endOfWeek = startOfWeek.add(const Duration(days: 6));
         logger(startOfWeek);
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
           int income = 0;
           int expense = 0;
           for (var element in DB.moneyList) {
