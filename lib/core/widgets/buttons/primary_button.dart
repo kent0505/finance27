@@ -23,7 +23,7 @@ class PrimaryButton extends StatelessWidget {
       height: 48,
       width: width,
       decoration: BoxDecoration(
-        color: AppColors.main,
+        color: active ? AppColors.main : AppColors.main50,
         borderRadius: BorderRadius.circular(10),
       ),
       child: CupertinoButton(
@@ -33,7 +33,7 @@ class PrimaryButton extends StatelessWidget {
           child: TextR(
             title,
             fontSize: 16,
-            color: active ? AppColors.white : AppColors.bg,
+            color: active ? AppColors.white : AppColors.card2,
           ),
         ),
       ),

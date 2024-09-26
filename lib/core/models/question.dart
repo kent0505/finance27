@@ -20,7 +20,7 @@ class Answer {
   Answer({
     required this.answer,
     required this.correct,
-    this.color = AppColors.card,
+    this.color = AppColors.card2,
   });
 }
 

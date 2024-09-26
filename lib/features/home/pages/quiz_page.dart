@@ -32,7 +32,7 @@ class _QuizPageState extends State<QuizPage> {
     Future.delayed(const Duration(seconds: 1), () {
       canTap = true;
       setState(() {
-        value.color = AppColors.card;
+        value.color = AppColors.card2;
         logger(questionsList.length);
         if (index + 1 < questionsList.length) {
           index++;
