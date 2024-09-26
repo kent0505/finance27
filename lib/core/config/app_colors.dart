@@ -5,6 +5,7 @@ class AppColors {
   static const Color bg = Color(0xff444444);
   static const Color navbar = Color(0xff485151);
   static const Color textfield = Color(0xff464646);
+  static const Color card = Color(0xff1B1B1D);
   static const Color white = Color(0xffFAFAFA);
   static const Color black = Color(0xff000000);
 

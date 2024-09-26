@@ -73,9 +73,14 @@ class _Tile extends StatelessWidget {
         padding: EdgeInsets.zero,
         child: Row(
           children: [
-            const SizedBox(width: 18),
-            SvgPicture.asset('assets/settings/settings$id.svg'),
-            const SizedBox(width: 18),
+            SizedBox(
+              width: 54,
+              child: Center(
+                child: SvgPicture.asset(
+                  'assets/settings/settings$id.svg',
+                ),
+              ),
+            ),
             Expanded(
               child: TextM(title, fontSize: 16),
             ),

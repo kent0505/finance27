@@ -38,9 +38,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// flutter build apk --split-per-abi
-// <uses-permission android:name="android.permission.INTERNET"/>
-// &#x2007;
-// <key>NSPhotoLibraryUsageDescription</key>
-// <string>Your app needs access to the photo library to select photos.</string>

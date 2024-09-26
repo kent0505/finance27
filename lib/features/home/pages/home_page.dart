@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/widgets/custom_scaffold.dart';
 import '../../activities/pages/activities_page.dart';
+import 'quiz_page.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/nav_bar.dart';
 import 'settings_page.dart';
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
 
               if (state is HomeActivities) return const ActivitiesPage();
 
-              if (state is HomeQuiz) return const Text('Quiz');
+              if (state is HomeQuiz) return const QuizPage();
 
               return const _Home();
             },
