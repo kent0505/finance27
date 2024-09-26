@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/config/app_colors.dart';
+import '../../core/db/prefs.dart';
 import '../../core/widgets/buttons/primary_button.dart';
 import '../../core/widgets/custom_scaffold.dart';
 import '../../core/widgets/texts/text_r.dart';
@@ -20,9 +21,11 @@ class _OnboardPageState extends State<OnboardPage> {
   String desc =
       'Plan your budget, control your income and expenses, track changes in exchange rates and cryptocurrencies and receive notifications about exchange rates and their changes.';
 
-  void onNext() {
+  void onNext() async {
     if (id == 2) {
-      context.go('/home');
+      await saveOnboard().then((value) {
+        if (mounted) context.go('/home');
+      });
     } else {
       setState(() {
         id++;

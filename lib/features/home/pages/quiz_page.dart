@@ -102,7 +102,7 @@ class _QuizPageState extends State<QuizPage> {
                 child: TextB(
                   questionsList[index].question,
                   fontSize: 32,
-                  maxLines: 3,
+                  maxLines: 4,
                   textAlign: TextAlign.center,
                 ),
               ),
