@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/config/app_colors.dart';
 import '../../../core/utils.dart';
-import '../../../core/widgets/page_title.dart';
 import '../../../core/widgets/texts/text_r.dart';
 import '../../money/widgets/income_expense_card.dart';
 import '../bloc/filter_bloc.dart';
@@ -46,7 +45,9 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
     return Column(
       children: [
         SizedBox(height: 46 + getStatusBar(context)),
-        const PageTitle('Activities'),
+        const Center(
+          child: TextB('Activities', fontSize: 32),
+        ),
         const SizedBox(height: 46),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

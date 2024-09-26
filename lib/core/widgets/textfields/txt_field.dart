@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../config/app_colors.dart';
-import '../../utils.dart';
 
 class TxtField extends StatefulWidget {
   const TxtField({
@@ -35,20 +34,6 @@ class _TxtFieldState extends State<TxtField> {
     final digit = FilteringTextInputFormatter.digitsOnly;
     if (widget.number) return [length, digit];
     return [length];
-  }
-
-  void onDateTimeChanged(DateTime date) {
-    setState(() {
-      widget.controller.text = dateToString(date);
-    });
-    widget.onChanged();
-  }
-
-  void onTimeChanged(DateTime date) {
-    setState(() {
-      widget.controller.text = timeToString(date);
-    });
-    widget.onChanged();
   }
 
   @override

@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/config/app_colors.dart';
 import '../../../core/utils.dart';
-import '../../../core/widgets/page_title.dart';
 import '../../../core/widgets/texts/text_r.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -19,7 +18,9 @@ class _SettingsPageState extends State<SettingsPage> {
     return Column(
       children: [
         SizedBox(height: 46 + getStatusBar(context)),
-        const PageTitle('Settings'),
+        const Center(
+          child: TextB('Settings', fontSize: 32),
+        ),
         const SizedBox(height: 43),
         const _Tile(
           id: 1,
