@@ -3,6 +3,9 @@ import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'db/db.dart';
+import 'models/money.dart';
+
 double navBarHeight = 62;
 
 int getCurrentTimestamp() {
@@ -103,4 +106,23 @@ String getCategorySvg(String cat) {
   if (cat == 'Rest') return 'assets/category/cat10.svg';
   if (cat == 'Investment') return 'assets/category/cat11.svg';
   return 'assets/category/cat1.svg';
+}
+
+int totalIncome = 0;
+int totalExpense = 0;
+
+void getTotalMoney() {
+  totalIncome = 0;
+  totalExpense = 0;
+  for (Money money in DB.moneyList) {
+    if (money.income) {
+      totalIncome += money.amount;
+    } else {
+      totalExpense += money.amount;
+    }
+  }
+}
+
+String formatNumber(int number) {
+  return NumberFormat('#,###').format(number);
 }

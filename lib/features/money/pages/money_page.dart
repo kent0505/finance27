@@ -1,5 +1,7 @@
+import 'package:finance27/features/money/widgets/exchange_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/utils.dart';
 import '../../../core/widgets/others/no_data.dart';
@@ -92,32 +94,48 @@ class _MoneyPageState extends State<MoneyPage> {
           ],
         ),
         const SizedBox(height: 9),
-        BlocBuilder<MoneyBloc, MoneyState>(
-          builder: (context, state) {
-            if (state is MoneyLoadedState) {
-              if (state.moneys.isEmpty) {
-                return const NoData(expanded: true);
+        if (pageIndex == 2) ...[
+          BlocBuilder<MoneyBloc, MoneyState>(
+            builder: (context, state) {
+              if (state is MoneyLoadedState) {
+                if (state.moneys.isEmpty) {
+                  return const NoData(expanded: true);
+                }
+
+                return Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    children: [
+                      const SizedBox(height: 9),
+                      ...List.generate(
+                        state.moneys.length,
+                        (index) {
+                          return MoneyCard(money: state.moneys[index]);
+                        },
+                      ),
+                    ],
+                  ),
+                );
               }
 
-              return Expanded(
-                child: ListView(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  children: [
-                    const SizedBox(height: 9),
-                    ...List.generate(
-                      state.moneys.length,
-                      (index) {
-                        return MoneyCard(money: state.moneys[index]);
-                      },
-                    ),
-                  ],
-                ),
-              );
-            }
-
-            return Container();
-          },
-        ),
+              return Container();
+            },
+          ),
+        ] else ...[
+          const SizedBox(height: 9),
+          const ExchangeCard(dollar: true),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset('assets/income1.svg'),
+              const SizedBox(width: 5),
+              SvgPicture.asset('assets/income2.svg'),
+            ],
+          ),
+          const SizedBox(height: 10),
+          const ExchangeCard(dollar: false),
+        ],
         SizedBox(height: navBarHeight + getBottom(context)),
       ],
     );
